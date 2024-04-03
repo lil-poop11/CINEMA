@@ -1,0 +1,100 @@
+<?php
+
+class Filme {
+    private $titulo;
+    private $duracao;
+    private $classificacao;
+
+    public function __construct($titulo, $duracao, $classificacao) {
+        $this->titulo = $titulo;
+        $this->duracao = $duracao;
+        $this->classificacao = $classificacao;
+    }
+
+    public function getTitulo() {
+        return $this->titulo;
+    }
+
+    public function getDuracao() {
+        return $this->duracao;
+    }
+
+    public function getClassificacao() {
+        return $this->classificacao;
+    }
+}
+
+class Sala {
+    private $numero;
+    private $capacidade;
+
+    public function __construct($numero, $capacidade) {
+        $this->numero = $numero;
+        $this->capacidade = $capacidade;
+    }
+
+    public function getNumero() {
+        return $this->numero;
+    }
+
+    public function getCapacidade() {
+        return $this->capacidade;
+    }
+}
+
+class Ingresso {
+    private $cliente;
+    private $filme;
+    private $sala;
+    private $preco;
+
+    public function __construct($cliente, $filme, $sala, $preco) {
+        $this->cliente = $cliente;
+        $this->filme = $filme;
+        $this->sala = $sala;
+        $this->preco = $preco;
+    }
+
+    public function exibirIngresso() {
+        echo "Filme: " . $this->filme->getTitulo() . "<br>";
+        echo "Sala: " . $this->sala->getNumero() . "<br>";
+        echo "Preço: " . $this->preco . " reais<br>";
+    }
+}
+
+class Cliente {
+    private $nome;
+
+    public function __construct($nome) {
+        $this->nome = $nome;
+    }
+
+    public function getNome() {
+        return $this->nome;
+    }
+}
+
+$filme1 = new Filme("Vingadores: Ultimato", 181, "12 anos");
+$filme2 = new Filme("O Rei Leão", 118, "Livre");
+
+$sala1 = new Sala(1, 100);
+$sala2 = new Sala(2, 80);
+
+echo "<h2>Filmes em Exibição</h2>";
+echo "<h3>Filme 1:</h3>";
+echo "Título: " . $filme1->getTitulo() . "<br>";
+echo "Duração: " . $filme1->getDuracao() . " minutos<br>";
+echo "Classificação: " . $filme1->getClassificacao() . "<br>";
+
+echo "<h3>Filme 2:</h3>";
+echo "Título: " . $filme2->getTitulo() . "<br>";
+echo "Duração: " . $filme2->getDuracao() . " minutos<br>";
+echo "Classificação: " . $filme2->getClassificacao() . "<br>";
+
+echo "<h2>Compra de Ingresso</h2>";
+$cliente1 = new Cliente("João");
+$ingresso1 = new Ingresso($cliente1, $filme1, $sala1, 20);
+echo "<h3>Ingresso Comprado:</h3>";
+$ingresso1->exibirIngresso();
+
+?>
